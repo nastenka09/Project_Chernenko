@@ -3,10 +3,15 @@
 Вывести наибольшее из целых чисел K, 
 для которых сумма 1 + 2 + ... + K будет меньше или равна N, и саму эту сумму.
 '''
-# try:
-#     N = int(input('Введите число N: '))
-#     K = int(input('Введите число K: '))
-#     sum = 0
-#     for i in range (1, K+1):
-#         sum+=i
-#     if su
+try:
+    N = int(input("Введите N (>1): "))
+    if N > 1:
+      K = 0
+      sum = 0
+    while sum + K + 1 <= N:
+        K += 1
+        sum += K
+    print(f"K={K}, сумма={sum}")
+        
+except ValueError:
+    print("Ошибка: нужно ввести целое число")
