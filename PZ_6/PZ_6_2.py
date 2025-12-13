@@ -3,3 +3,24 @@
  все элементы с нечетными порядковыми номерами (1, 3, ...) и вывести размер полученного списка B и его содержимое. 
  Условный оператор не использовать.
 '''
+import random
+
+try:
+    N = random.randint(1, 14)
+    print(f"Размер списка N = {N}")
+    
+    A = []
+    for i in range(N):
+        A.append(random.randint(-100, 100))
+    
+    print(f"Исходный список A: {A}")
+    
+    B = []
+    for i in range(0, N, 2):
+        B.append(A[i])
+    
+    print(f"Список B (элементы с нечетными номерами): {B}")
+    print(f"Размер списка B: {len(B)}")
+
+except ValueError:
+    print("Ошибка")
