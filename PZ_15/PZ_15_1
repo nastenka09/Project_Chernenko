@@ -1,1 +1,159 @@
+'''
+вариант 30
+'''
+from tkinter import *
 
+root = Tk()
+root.title("Регистрационная страница электронной библиотеки")
+root.geometry("750x800")
+root.configure(bg='#ffb6c1')
+
+header_frame = Frame(root, bg='#ffb6c1')
+header_frame.pack(fill=X, pady=10)
+
+title_label = Label(header_frame,
+                    text="Регистрационная страница электронной библиотеки",
+                    font=("Arial", 14, "bold"),
+                    bg='#ffb6c1',
+                    anchor='w')
+title_label.pack(side=TOP, fill=X)
+
+desc_label = Label(header_frame,
+                   text="Заполнив анкету, вы сможете пользоваться нашей электронной библиотекой",
+                   bg='#ffb6c1',
+                   anchor='w')
+desc_label.pack(side=TOP, fill=X, pady=5)
+
+main_frame = Frame(root, bg='#ffb6c1')
+main_frame.pack(fill=BOTH, expand=True, pady=10)
+
+name_frame = Frame(main_frame, bg='#ffb6c1')
+name_frame.pack(fill=X, pady=5)
+
+name_label = Label(name_frame,
+                   text="Введите регистрационное имя",
+                   bg='#ffb6c1',
+                   width=35,
+                   anchor='w')
+name_label.pack(side=LEFT)
+
+name_entry = Entry(name_frame, width=40)
+name_entry.pack(side=LEFT, padx=10)
+
+password_frame = Frame(main_frame, bg='#ffb6c1')
+password_frame.pack(fill=X, pady=5)
+
+password_label = Label(password_frame,
+                       text="Введите пароль",
+                       bg='#ffb6c1',
+                       width=35,
+                       anchor='w')
+password_label.pack(side=LEFT)
+
+password_entry = Entry(password_frame, width=40, show="*")
+password_entry.pack(side=LEFT, padx=10)
+
+confirm_frame = Frame(main_frame, bg='#ffb6c1')
+confirm_frame.pack(fill=X, pady=5)
+
+confirm_label = Label(confirm_frame,
+                      text="Подтвердите пароль",
+                      bg='#ffb6c1',
+                      width=35,
+                      anchor='w')
+confirm_label.pack(side=LEFT)
+
+confirm_entry = Entry(confirm_frame, width=40, show="*")
+confirm_entry.pack(side=LEFT, padx=10)
+
+age_frame = Frame(main_frame, bg='#ffb6c1')
+age_frame.pack(fill=X, pady=10)
+
+age_label = Label(age_frame,
+                  text="Ваш возраст",
+                  bg='#ffb6c1',
+                  width=35,
+                  anchor='w')
+age_label.pack(side=LEFT)
+
+age_var = IntVar()
+age_buttons_frame = Frame(age_frame, bg='#ffb6c1')
+age_buttons_frame.pack(side=LEFT, padx=10)
+
+Radiobutton(age_buttons_frame, text="До 20", variable=age_var, value=1, bg='#ffb6c1').pack(side=LEFT, padx=5)
+Radiobutton(age_buttons_frame, text="20-30", variable=age_var, value=2, bg='#ffb6c1').pack(side=LEFT, padx=5)
+Radiobutton(age_buttons_frame, text="30-50", variable=age_var, value=3, bg='#ffb6c1').pack(side=LEFT, padx=5)
+Radiobutton(age_buttons_frame, text="старше 50", variable=age_var, value=4, bg='#ffb6c1').pack(side=LEFT, padx=5)
+
+lang_frame = Frame(main_frame, bg='#ffb6c1')
+lang_frame.pack(fill=X, pady=10)
+
+lang_label = Label(lang_frame,
+                   text="На каких языках читаете",
+                   bg='#ffb6c1',
+                   width=35,
+                   anchor='w')
+lang_label.pack(side=LEFT)
+
+lang_check_frame = Frame(lang_frame, bg='#ffb6c1')
+lang_check_frame.pack(side=LEFT, padx=10)
+
+lang1_var = IntVar()
+lang2_var = IntVar()
+lang3_var = IntVar()
+lang4_var = IntVar()
+
+Checkbutton(lang_check_frame, text="русский", variable=lang1_var, bg='#ffb6c1').pack(side=LEFT, padx=3)
+Checkbutton(lang_check_frame, text="английский", variable=lang2_var, bg='#ffb6c1').pack(side=LEFT, padx=3)
+Checkbutton(lang_check_frame, text="французский", variable=lang3_var, bg='#ffb6c1').pack(side=LEFT, padx=3)
+Checkbutton(lang_check_frame, text="немецкий", variable=lang4_var, bg='#ffb6c1').pack(side=LEFT, padx=3)
+
+format_frame = Frame(main_frame, bg='#ffb6c1')
+format_frame.pack(fill=X, pady=10)
+
+format_label = Label(format_frame,
+                     text="Какой формат данных является для вас предпочтительным?",
+                     bg='#ffb6c1',
+                     anchor='w')
+format_label.pack(side=TOP, fill=X)
+
+format_listbox = Listbox(format_frame, height=2, width=40)
+format_listbox.insert(1, "HTML")
+format_listbox.insert(2, "Plain text")
+format_listbox.pack(side=LEFT, pady=5)
+
+authors_frame = Frame(main_frame, bg='#ffb6c1')
+authors_frame.pack(fill=X, pady=10)
+
+authors_label = Label(authors_frame,
+                      text="Ваши любимые авторы:",
+                      bg='#ffb6c1',
+                      anchor='w')
+authors_label.pack(side=TOP, fill=X, anchor='w')
+
+authors_listbox = Listbox(authors_frame, height=5, width=40, selectmode=EXTENDED)
+authors_listbox.pack(side=TOP, pady=5, anchor='w')
+
+authors = ["Пушкин А.С.", "Лермонтов М.Ю.", "Толстой Л.Н.", "Достоевский Ф.М.",
+           "Чехов А.П.", "Тургенев И.С.", "Гоголь Н.В.", "Есенин С.А."]
+for author in authors:
+    authors_listbox.insert(END, author)
+
+buttons_frame = Frame(main_frame, bg='#ffb6c1')
+buttons_frame.pack(fill=X, pady=20)
+
+ok_button = Button(buttons_frame, text="OK", width=10)
+ok_button.pack(side=LEFT)
+
+cancel_button = Button(buttons_frame, text="Отменить", width=10)
+cancel_button.pack(side=LEFT, padx=10)
+
+footer_frame = Frame(root, bg='#ffb6c1')
+footer_frame.pack(fill=X, pady=10)
+
+footer_label = Label(footer_frame,
+                     text="Проверка PHP. Лабораторные по базам данных",
+                     bg='#ffb6c1')
+footer_label.pack()
+
+root.mainloop()
