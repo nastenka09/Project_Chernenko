@@ -1,1 +1,76 @@
+import math
 
+
+class Circle:
+
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    @property
+    def radius(self) -> float:
+        return self._radius
+
+    @radius.setter
+    def radius(self, value: float):
+        if value <= 0:
+            raise ValueError("Радиус должен быть положительным числом.")
+        self._radius = value
+
+    def calculate_diameter(self) -> float:
+        return 2 * self.radius
+
+    def calculate_circumference(self) -> float:
+        return 2 * math.pi * self.radius
+
+    def calculate_area(self) -> float:
+        return math.pi * (self.radius ** 2)
+
+    def __str__(self) -> str:
+        return (f"Круг: радиус = {self.radius:.2f} | "
+                f"диаметр = {self.calculate_diameter():.2f} | "
+                f"длина окр. = {self.calculate_circumference():.2f} | "
+                f"площадь = {self.calculate_area():.2f}")
+
+
+def input_form():
+    print("\n" + "=" * 50)
+    print("        ФОРМА ВВОДА ДАННЫХ: КЛАСС 'КРУГ'")
+    print("=" * 50)
+
+    try:
+        radius_input = input("📥 Введите радиус круга (см): ").strip()
+        radius = float(radius_input)
+
+        circle = Circle(radius)
+
+        print("\n📊 РЕЗУЛЬТАТЫ РАСЧЕТА:")
+        print("-" * 30)
+        print(f"Радиус:           {circle.radius:.2f} см")
+        print(f"Диаметр:          {circle.calculate_diameter():.2f} см")
+        print(f"Длина окружности: {circle.calculate_circumference():.2f} см")
+        print(f"Площадь:          {circle.calculate_area():.2f} см²")
+
+    except ValueError as e:
+        print(f"\n❌ Ошибка ввода данных: {e}")
+    except Exception as e:
+        print(f"\n❌ Произошла непредвиденная ошибка: {e}")
+    finally:
+        print("=" * 50)
+
+
+if __name__ == "__main__":
+    print("🧪 ТЕСТ 1: Создание круга с радиусом 5")
+    c1 = Circle(5)
+    print(c1)
+
+    print("\n🧪 ТЕСТ 2: Создание круга с радиусом 12.7")
+    c2 = Circle(12.7)
+    print(c2)
+
+    print("\n🧪 ТЕСТ 3: Проверка валидации отрицательного радиуса")
+    try:
+        c3 = Circle(-3)
+    except ValueError as err:
+        print(f"✅ Ожидаемая ошибка поймана: {err}")
+
+    input_form()
